@@ -39,8 +39,6 @@ Web/iOS
 Web/ThesisProject.xcodeproj
 Web/ThesisProjectTests
 Mobile/node_modules
-Mobile/iOS
-Mobile/ThesisProject.xcodeproj
 Mobile/ThesisProjectTests
 api
 
