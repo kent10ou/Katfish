@@ -9,16 +9,14 @@
 
 #import "AppDelegate.h"
 
-//  AppDelegate.m
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-
 #import "RCTRootView.h"
 
-@implementation AppDelegate
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-  [FBSDKAppEvents activateApp];
-}
+// TODO: Change this to your redirect scheme
+static NSString * const FacebookRedirectScheme = @"fb:491908800986339";
+
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -38,7 +36,7 @@
    * on the same Wi-Fi network.
    */
   
-  jsCodeLocation = [NSURL URLWithString:@"http://127.13.95.129:8080/index.ios.bundle"];
+  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle"];
   
   /**
    * OPTION 2
@@ -61,26 +59,25 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-  //  return YES;
-  return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                  didFinishLaunchingWithOptions:launchOptions];
+  return YES;
 }
 
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+  [FBSDKAppEvents activateApp];
+}
 
-//- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//  return [[FBSDKApplicationDelegate sharedInstance] application:application
-//                                  didFinishLaunchingWithOptions:launchOptions];
-//}
-
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation
-{
-  return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                        openURL:url
-                                              sourceApplication:sourceApplication
-                                                     annotation:annotation];
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+  NSString *scheme = url.scheme;
+  
+  if ([scheme isEqualToString:FacebookRedirectScheme]) {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
+  }
+  
+  
+  return NO;
 }
 
 @end

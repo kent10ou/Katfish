@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Facebook. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 #import "ViewController.h"
 
 // Add this to the header of your file, e.g. in ViewController.m
@@ -25,12 +23,16 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  // Do any additional setup after loading the view, typically from a nib.
   FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
   // Optional: Place the button in the center of your view.
   loginButton.center = self.view.center;
   [self.view addSubview:loginButton];
-
+  // Do any additional setup after loading the view, typically from a nib.
+  // Extend the code sample "1. Add Facebook Login Button Code"
+  // In your viewDidLoad method:
+  loginButton.readPermissions =
+  @[@"public_profile", @"email", @"user_friends"];
+  
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,3 +42,7 @@
 }
 
 @end
+
+
+
+
