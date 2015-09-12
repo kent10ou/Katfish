@@ -1,22 +1,16 @@
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
 
 #import "AppDelegate.h"
 
-#import "RCTRootView.h"
-
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-// TODO: Change this to your redirect scheme
-static NSString * const FacebookRedirectScheme = @"fb:491908800986339";
+#import "RCTRootView.h"
 
 @implementation AppDelegate
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+  [FBSDKAppEvents activateApp];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -59,25 +53,20 @@ static NSString * const FacebookRedirectScheme = @"fb:491908800986339";
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-  return YES;
+  
+  return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                  didFinishLaunchingWithOptions:launchOptions];
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-  [FBSDKAppEvents activateApp];
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-  NSString *scheme = url.scheme;
-  
-  if ([scheme isEqualToString:FacebookRedirectScheme]) {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation];
-  }
-  
-  
-  return NO;
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+  return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                        openURL:url
+                                              sourceApplication:sourceApplication
+                                                     annotation:annotation];
 }
 
 @end

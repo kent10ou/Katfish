@@ -1,3 +1,4 @@
+
 'use strict';
 
 var React = require('react-native');
@@ -18,18 +19,19 @@ var Login = React.createClass({
         <FBSDKLoginButton
           style={styles.loginButton}
           onLoginFinished={(error, result) => {
+            window.Katfish.setState({selectedTab : 'featured'})
             if (error) {
-              alert('Error logging in.');
+              console.log('Error logging in.');
             } else {
               if (result.isCanceled) {
-                alert('Login cancelled.');
+                console.log('Login cancelled.');
               } else {
-                alert('Logged in.');
+                console.log('Logged in.');
               }
             }
           }}
-          onLogoutFinished={() => alert('Logged out.')}
-          readPermissions={[]}
+          onLogoutFinished={() => console.log('Logged out.')}
+          readPermissions={['public_profile','user_friends','email']}
           publishPermissions={[]}/>
       </View>
     );
