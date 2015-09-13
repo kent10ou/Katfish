@@ -95,6 +95,7 @@
 		FF7293A71B9B749C00B85A6A /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = FF7293991B9B749C00B85A6A /* package.json */; };
 		FF7293A81B9B749C00B85A6A /* react-native-fbsdklogin.podspec in Resources */ = {isa = PBXBuildFile; fileRef = FF72939D1B9B749C00B85A6A /* react-native-fbsdklogin.podspec */; };
 		FF7293A91B9B749C00B85A6A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FF72939E1B9B749C00B85A6A /* README.md */; };
+		FFF719791BA4B2ED00B21660 /* FacebookLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFF719781BA4B2ED00B21660 /* FacebookLoginManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -332,6 +333,8 @@
 		FF72939A1B9B749C00B85A6A /* RCTFBSDKLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = RCTFBSDKLogin.xcodeproj; sourceTree = "<group>"; };
 		FF72939D1B9B749C00B85A6A /* react-native-fbsdklogin.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "react-native-fbsdklogin.podspec"; sourceTree = "<group>"; };
 		FF72939E1B9B749C00B85A6A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FFF719681BA4B2C600B21660 /* FacebookLoginManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FacebookLoginManager.h; sourceTree = "<group>"; };
+		FFF719781BA4B2ED00B21660 /* FacebookLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookLoginManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -451,6 +454,8 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				FF7292EA1B9A562300B85A6A /* ViewController.h */,
 				FF7292EB1B9A564800B85A6A /* ViewController.m */,
+				FFF719681BA4B2C600B21660 /* FacebookLoginManager.h */,
+				FFF719781BA4B2ED00B21660 /* FacebookLoginManager.m */,
 			);
 			path = Katfish;
 			sourceTree = "<group>";
@@ -1103,6 +1108,7 @@
 				FF3E23B01B9D2251009EF9C6 /* RCTFBSDKAppGroupAddDialog.m in Sources */,
 				FF3E23B41B9D2251009EF9C6 /* RCTFBSDKLikeControlManager.m in Sources */,
 				FF7293A91B9B749C00B85A6A /* README.md in Sources */,
+				FFF719791BA4B2ED00B21660 /* FacebookLoginManager.m in Sources */,
 				FF7293A11B9B749C00B85A6A /* RCTFBSDKLoginButtonManager.m in Sources */,
 				FF72937A1B9B749300B85A6A /* RCTFBSDKAccessToken.m in Sources */,
 			);

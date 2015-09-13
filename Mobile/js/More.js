@@ -13,7 +13,7 @@ var React = require('react-native'),
 ||========================================================*/
 
 var styles = require('./styles'),
-  SearchNav = require('./SearchNav');
+  MoreNav = require('./MoreNav');
 
 /*========================================================||
 ||   React native variables, used like HTML tags          ||
@@ -29,17 +29,18 @@ var {
 ||   Adds the Search view on top of Katfish               ||
 ||========================================================*/
 
-class Search extends Component {
+class More extends Component {
     render() {
+      console.log()
         return (
             <NavigatorIOS
-              style={styles.searchContainer}
+              style={styles.moreContainer}
               initialRoute={{
-                title: person.name,
-                component: SearchNav
-              }}/>
+                title: window.Katfish.userName,
+                component: MoreNav
+            }}/>
         );
     }
 }
 
-module.exports = Search;
+module.exports = More;

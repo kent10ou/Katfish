@@ -5,41 +5,39 @@
 ||========================================================*/
 
 var React = require('react-native'),
-  Firebase = require('firebase'),
-  ref = new Firebase("https://katfish.firebaseio.com/"),
-  person = {};
+Firebase = require('firebase'),
+ref = new Firebase("https://katfish.firebaseio.com/"),
+person = {};
 
 /*========================================================||
 ||   Setting for individual id (table below)              ||
 ||========================================================*/
-function shuffle(array) {
-   for (var i = array.length - 1; i > 0; i--) {
-       var j = Math.floor(Math.random() * (i + 1));
-       var temp = array[i];
-       array[i] = array[j];
-       array[j] = temp;
-   }
-   return array;
+person.shuffle = function(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
 }
-
-person.id = '100010275515528';
-
+person.id = '100010275515528'
 /*========================================================||
 ||   Accessing the database through firebase functions    ||
 ||========================================================*/
 
 person.fish = function(friends){
-  shuffle(friends);
+  this.shuffle(friends);
   person.id = friends.shift().id;
-  friends.push(person.id);
+  friends.push({id : person.id});
   var personRef = ref.child("pond").child(person.id);
 
   personRef.on("value", function (snap) {
-    person.name = snap.val().name;
+    // person.name = snap.val().name;
   })
 
   personRef.on('value', function (snap) {
-    person.baller = snap.val().baller;
+    // person.baller = snap.val().baller;
   })
 }
 /*========================================================||
@@ -47,7 +45,7 @@ person.fish = function(friends){
 ||========================================================*/
 
 module.exports = person;
- 
+
 /*========================================================||
 ||   IDs of sample data                                   ||
 ||========================================================*/

@@ -38,7 +38,7 @@ var SearchNav = React.createClass ({
   userID = person.id;
 
   return {
-    selectedTab: 'featured',
+    selectedTab: 'search',
     dataSource: new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
       cloneWithRows: (['row 1', 'row 2'])
@@ -99,7 +99,6 @@ renderTraits(traitData) {
       if (count === 1) { vote = vote.replace(/s/,""); }
       countVotes.push(count  + " " + vote + "                                ");
       traits.push(key.replace(/\w/,function(s){return s.toUpperCase(); }) + "                      ");
-    // traits.push(key.replace(/\w/,function(s){return s.toUpperCase(); }) +' ( ' + count + ' )' + "                                             ");
   }
 }
 return (

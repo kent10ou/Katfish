@@ -45,21 +45,6 @@ module.exports = {
    justifyContent: 'center',
    transform: [{'translate' : [0, 0, 99]}]
  },
-
- //We need to fix this issue for the image to render in the background
- //instead of next to the login button
- backdrop: {
-    paddingTop: 60,
-    opacity: 0.4,
-    flex: 1,
-    resizeMode: 'contain',
-    transform: [{'translate' : [0, 0, -99]}]
-  },
-  backgroundView: {
-    height: 120,
-    width: 320,
-    // backgroundColor: 'rgba(0,0,0,0)'
-  },
  backgroundImage: {
   flex: 1,
   resizeMode: 'contain',
@@ -81,15 +66,20 @@ featNavContainer: {
 },
 featNavButtonText: {
  fontSize: 18,
- color: 'white',
+ color: '#3366FF',
  alignSelf: 'center'
 },
 featNavButton: {
  height: 44,
  flexDirection: 'column',
- backgroundColor: '#48BBEC',
+ backgroundColor: 'transparent',
  alignSelf: 'stretch',
  justifyContent: 'center'
+},
+moreNavContainer: {
+  flex: 0.15,
+  alignItems: "center",
+  justifyContent: "center"
 },
 
 /*=================================||
@@ -101,16 +91,36 @@ searchContainer: {
 },
 
 /*=================================||
-||    This section for featured    ||
+||    This section for more        ||
 ||=================================*/
 
+moreContainer: {
+  flex: 1
+},
+
+/*=================================||
+||    This section for featured    ||
+||=================================*/
+ backdrop: {
+    paddingTop: 60,
+    opacity: 0.4,
+    flex: 1,
+    resizeMode: 'contain',
+    transform: [{'translate' : [0, 0, -99]}]
+  },
+backgroundView: {
+  height: 120,
+  width: 320,
+  backgroundColor: 'rgba(0,0,0,0)',
+},
 featContainer: {
   flex: 1
 },
 scrollView: {
-  marginTop: -16,
+  marginTop: -10,
   height: 200,
-  width: 400
+  width: 400,
+  backgroundColor: 'transparent'
 },
 
 /*=================================||

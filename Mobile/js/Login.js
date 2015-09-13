@@ -1,38 +1,107 @@
-
-'use strict';
+/*===========================================||
+||   Required Modules for React Native       ||
+||===========================================*/
 
 var React = require('react-native');
+var FBSDKLogin = require('react-native-fbsdklogin');
+var FBSDKCore = require('react-native-fbsdkcore');
+
+/*===============================================||
+||   Required components for React inline tags   ||
+||===============================================*/
+
 var {
+  AppRegistry,
   StyleSheet,
+  Text,
   View,
+  TouchableHighlight,
+  Image
 } = React;
 
-var FBSDKLogin = require('react-native-fbsdklogin');
+/*====================================================||
+||   Required components for FBSDKLogin inline tags   ||
+||====================================================*/
+
 var {
   FBSDKLoginButton,
 } = FBSDKLogin;
 
+/*====================================================||
+||   Required components for FBSDKLogin inline tags   ||
+||====================================================*/
+
+var {
+  FBSDKGraphRequest,
+  FBSDKGraphRequestManager,
+  FBSDKAccessToken
+} = FBSDKCore;
+
+/*======================================================||
+||  Facebook Graph API calls that get our ID and token  ||
+||======================================================*/
+
+var fetchMyId = new FBSDKGraphRequest((error, result) => {
+ if (error) {
+   console.log('Error making request.', error);
+ } else {
+  console.log('FB id received')
+  window.Katfish.userName = result.name;
+  window.Katfish.userID = result.id
+ }
+}, '/me', {}, this.tokenString, "v2.4", "GET");
+
+/*=====================================================||
+||  Facebook Graph API call that gets my friends list  ||
+||=====================================================*/
+
+var fetchFriendsRequest = new FBSDKGraphRequest((error, result) => {
+ if (error) {
+   console.log('Error making request.', error);
+ } else {
+   require('./PersonDB').fish(result.data);
+ }
+}, '/me/friends', {}, this.tokenString, "v2.4", "GET");
+
+/*======================================================||
+||  The request manager makes the calls on a timeout to ||
+||  deal with the async issue. This issue is inherent   ||
+||  in FBSDK, which requires a tiemout.                 ||
+||======================================================*/
+
+FBSDKGraphRequestManager.batchRequests([fetchFriendsRequest, fetchMyId], function (error) {
+ if (error) {
+   console.log("ERROR", error);
+ }
+}, 60);
+
+var FacebookLoginManager = require('NativeModules').FacebookLoginManager;
+
 var Login = React.createClass({
-  render: function() {
+
+  login() {
+    window.Login = this;
+    FacebookLoginManager.newSession((error, info) => {
+      if (error) {
+        console.log('error logging in', error);
+      } else {
+        this.setState({result: info})
+      }
+    });
+  },
+
+  render() {
+    window.Login = this;
+    if(this.state){
+      window.Katfish.setState({selectedTab : 'featured'});
+    }
     return (
       <View style={this.props.style}>
-        <FBSDKLoginButton
-          style={styles.loginButton}
-          onLoginFinished={(error, result) => {
-            window.Katfish.setState({selectedTab : 'featured'})
-            if (error) {
-              console.log('Error logging in.');
-            } else {
-              if (result.isCanceled) {
-                console.log('Login cancelled.');
-              } else {
-                console.log('Logged in.');
-              }
-            }
-          }}
-          onLogoutFinished={() => console.log('Logged out.')}
-          readPermissions={['public_profile','user_friends','email']}
-          publishPermissions={[]}/>
+        <TouchableHighlight onPress={this.login}>
+          <Image
+            // source={require('../Images/fblogin.png')}
+            style={styles.loginButton}/>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -40,4 +109,5 @@ var Login = React.createClass({
 
 var styles = StyleSheet.create(require('./styles.js'));
 
+AppRegistry.registerComponent('Login', () => Login);
 module.exports = Login;
