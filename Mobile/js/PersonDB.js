@@ -28,11 +28,14 @@ person.id = '100010275515528'
 
 person.fish = function(friends){
   this.shuffle(friends);
-  person.id = friends.shift().id;
+  var personRandom = friends.shift()
+  person.id = personRandom.id;
+  person.name = personRandom.name;
   friends.push({id : person.id});
   var personRef = ref.child("pond").child(person.id);
 
   personRef.on("value", function (snap) {
+    console.log("OH SNAP", snap.val)
     // person.name = snap.val().name;
   })
 

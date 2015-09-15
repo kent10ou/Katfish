@@ -66,15 +66,15 @@ featNavContainer: {
 },
 featNavButtonText: {
  fontSize: 18,
- color: '#3366FF',
+ color: '#000000',
  alignSelf: 'center'
 },
 featNavButton: {
  height: 44,
  flexDirection: 'column',
- backgroundColor: 'transparent',
+ // backgroundColor: 'transparent',
  alignSelf: 'stretch',
- justifyContent: 'center'
+ justifyContent: 'center',
 },
 moreNavContainer: {
   flex: 0.15,
@@ -120,7 +120,8 @@ scrollView: {
   marginTop: -10,
   height: 200,
   width: 400,
-  backgroundColor: 'transparent'
+  backgroundColor: 'transparent',
+  opacity: 0.8
 },
 
 /*=================================||

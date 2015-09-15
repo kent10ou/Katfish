@@ -30,7 +30,7 @@ class Featured extends Component {
       <NavigatorIOS
         style={styles.featContainer}
         initialRoute={{
-          title: "Katfish "+person.name,
+          title: "Katfish "+ person.name,
         component: FeatNav
       }}/>
       );
