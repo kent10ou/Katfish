@@ -39,7 +39,7 @@ var indents = [],
 class Featured extends Component {
   getInitialState() {
     return {
-      opacity: 0.2,
+      backgroundColor: 'transparent',
     }
   }
 
@@ -63,6 +63,7 @@ class Featured extends Component {
     );
   };
 
+
   listTraits() {
     person.shuffle(qualities);
     for (var i = 0; i < qualities.length; i++) {
@@ -76,7 +77,7 @@ class Featured extends Component {
           onPress={()=>{
             personRef.child(variable).update(vote)
             qualities.splice(qualities.indexOf(vote),1)
-        }}>
+           }}>
           <Text style={styles.featNavButtonText}>{qualities[i]}</Text>
         </TouchableHighlight>);
       })(qualities[i], window.Katfish.userID);
