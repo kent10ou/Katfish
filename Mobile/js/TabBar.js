@@ -11,7 +11,7 @@ module.exports = function (){
   return(
     <TabBarIOS
       selectedTab={window.Katfish.state.selectedTab}
-      tintColor={'#48BBEC'}
+      tintColor={'#83aed2'}
       barTintColor={'#FFF'}
       translucent={'true'}>
       <TabBarIOS.Item

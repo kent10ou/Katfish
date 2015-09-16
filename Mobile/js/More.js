@@ -26,7 +26,7 @@ var {
 
 
 /*========================================================||
-||   Adds the Search view on top of Katfish               ||
+||   Adds the More view on top of Katfish                 ||
 ||========================================================*/
 
 class More extends Component {
@@ -40,7 +40,7 @@ class More extends Component {
                 component: MoreNav
             }}/>
         );
-    }
+    };
 }
 
 module.exports = More;

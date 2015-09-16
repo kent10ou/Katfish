@@ -66,15 +66,15 @@ featNavContainer: {
 },
 featNavButtonText: {
  fontSize: 18,
- color: '#000000',
+ color: '#3366ff',
  alignSelf: 'center'
 },
 featNavButton: {
  height: 44,
  flexDirection: 'column',
- // backgroundColor: 'transparent',
+ backgroundColor: 'transparent',
  alignSelf: 'stretch',
- justifyContent: 'center',
+ justifyContent: 'center'
 },
 moreNavContainer: {
   flex: 0.15,
@@ -114,14 +114,13 @@ backgroundView: {
   backgroundColor: 'rgba(0,0,0,0)',
 },
 featContainer: {
-  flex: 1
+  flex: 1,
+  color: '#83aed2'
 },
 scrollView: {
-  marginTop: -10,
+  marginTop: -16,
   height: 200,
-  width: 400,
-  backgroundColor: 'transparent',
-  opacity: 0.8
+  width: 400
 },
 
 /*=================================||
@@ -154,9 +153,7 @@ loginImage: {
 loginButton: {
   width: 200,
   height: 50,
-  shadowRadius: 5,
-  shadowColor: '#000000',
-  shadowOpacity: 1,
+  shadowOpacity: .9,
   shadowOffset: {width: 0, height: 0},
 },
 imageBox: {

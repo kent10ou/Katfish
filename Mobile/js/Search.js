@@ -33,11 +33,11 @@ class Search extends Component {
     render() {
         return (
             <NavigatorIOS
-              style={styles.searchContainer}
-              initialRoute={{
-                title: person.name,
-                component: SearchNav
-              }}/>
+                style={styles.searchContainer}
+                initialRoute={{
+            title: person.name,
+            component: SearchNav
+            }}/>
         );
     }
 }

@@ -99,6 +99,7 @@ renderTraits(traitData) {
       if (count === 1) { vote = vote.replace(/s/,""); }
       countVotes.push(count  + " " + vote + "                                ");
       traits.push(key.replace(/\w/,function(s){return s.toUpperCase(); }) + "                      ");
+    // traits.push(key.replace(/\w/,function(s){return s.toUpperCase(); }) +' ( ' + count + ' )' + "                                             ");
   }
 }
 return (
