@@ -11,12 +11,12 @@ module.exports = function (){
   return(
     <TabBarIOS
       selectedTab={window.Katfish.state.selectedTab}
-      tintColor={'#83aed2'}
-      barTintColor={'#FFF'}
+      tintColor={'#FFF'}
+      barTintColor={'#48BBEC'}
       translucent={'true'}>
       <TabBarIOS.Item
         selected={window.Katfish.state.selectedTab === 'featured'}
-        icon={{uri:'featured'}}
+        icon={require('image!friends')}
         onPress={() => {
         window.Katfish.setState({
         selectedTab: 'featured'
@@ -26,7 +26,7 @@ module.exports = function (){
     </TabBarIOS.Item>
     <TabBarIOS.Item
       selected={window.Katfish.state.selectedTab === 'search'}
-      icon={{uri:'search'}}
+      icon={require('image!graph')}
       onPress={() => {
       window.Katfish.setState({
        selectedTab: 'search'
@@ -36,7 +36,7 @@ module.exports = function (){
     </TabBarIOS.Item>
     <TabBarIOS.Item
       selected={window.Katfish.state.selectedTab === 'more'}
-      icon={{uri:'more'}}
+      icon={require('image!profile')}
       onPress={() => {
       window.Katfish.setState({
        selectedTab: 'more'
