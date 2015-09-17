@@ -90,7 +90,8 @@ var fetchFriendsRequest = new FBSDKGraphRequest((error, result) => {
  if (error) {
    console.log('Error making request.', error);
  } else {
-   require('./PersonDB').fish(result.data);
+    window.Katfish.friends = result.data
+    require('./PersonDB').fish(result.data);
  }
 }, '/me/friends', {}, this.tokenString, "v2.4", "GET");
 
@@ -130,7 +131,7 @@ var Login = React.createClass({
       <View style={this.props.style}>
         <TouchableHighlight onPress={this.login}>
           <Image
-            // source={require('../Images/fblogin')}
+            source={require('../Images/fblogin.png')}
             style={styles.loginButton}/>
         </TouchableHighlight>
       </View>

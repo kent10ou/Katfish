@@ -38,16 +38,15 @@ ref.once('value', function(snapshot) {
 
 person.fish = function(friends){
   this.shuffle(friends);
-  friendStore = friends.shift();
-  if (friendStore.name === window.Katfish.name) {
-    console.log("conflict!");
-    friendStore = friends.shift();
-    console.log("conflict corrected");
-  }
-  person.id = friendStore.id;
-  person.name = friendStore.name;
-  friends.push({id : person.id});
+  person.id = friends[0].id
   var personRef = ref.child("pond").child(person.id);
+
+  personRef.on("value", function(snapshot){
+      person.name = snapshot.val().name;
+      if (person.name === window.Katfish.name) {
+        console.log("conflict!");
+      }
+  });
 }
 /*========================================================||
 ||   Make the person available throughout the application ||
