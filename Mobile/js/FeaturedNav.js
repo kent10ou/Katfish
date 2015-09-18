@@ -9,7 +9,8 @@ var React = require('react-native'),
   person = require('./PersonDB'),
   Firebase = require('firebase'),
   ref = new Firebase("https://katfish.firebaseio.com/"),
-  personRef = ref.child("pond").child(person.id);
+  personRef = ref.child("pond").child(person.id),
+  tallyNav = require('./tallyNav');
 
 /*========================================================||
 ||   React native variables, used as inline tags          ||
@@ -48,9 +49,17 @@ class FeaturedNav extends Component {
         <Image source={{uri: 'http://chrissalam.com/bash/sailing.png'}}
           style={{backgroundColor: 'transparent', height: 600}}>
     
-          <TouchableHighlight
+          <TouchableHighlight 
+            underlayColor='transparent'
             onPress={()=>{
               console.log("PRESSED IMAGE")
+
+              this.props.navigator.push({
+                title: 'title',
+                component: tallyNav,
+              leftButtonTitle: 'Back',
+              onLeftButtonPress: () => this.props.navigator.pop(),
+            })
             }}>
           <Image source={{uri: 'http://graph.facebook.com/' + person.id + '/picture?type=large'}}
               style={{marginTop: 40, marginLeft:20, width: 170, height: 170, borderRadius: 85}} />

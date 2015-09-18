@@ -5,11 +5,15 @@
 'use strict';
 
 var React = require('react-native');
-
+var person = require('./PersonDB');
+var ref = new Firebase("https://katfish.firebaseio.com/");
+var styles = require('./styles')
 var {
 	View,
 	Text,
 	TouchableHighlight,
+	ListView
+
 
 } = React;
 
@@ -18,7 +22,7 @@ var TallyNav = React.createClass ({
 
   getInitialState() {
 //this will be replaced with a function that gets the facebook id of the user who logs in
-  	userID = person.id;
+  	// var userID = person.id;
 
    	return {
     	selectedTab: 'search',
@@ -36,12 +40,12 @@ var TallyNav = React.createClass ({
     if (!this.state.loaded) {
       ref.on("value", function(snapshot) {
         that.setState({
-          traits: snapshot.val().pond[userID],
+          traits: snapshot.val().pond[person.id],
           loaded:true});
       });
       return this.renderLoadingView();
     }
-    traits = this.state.traits;
+    var traits = this.state.traits;
     return this.renderTraits(traits);
   },
 
