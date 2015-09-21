@@ -9,8 +9,8 @@ var React = require('react-native'),
   person = require('./PersonDB'),
   Firebase = require('firebase'),
   ref = new Firebase("https://katfish.firebaseio.com/"),
-  personRef = ref.child("pond").child(person.id),
-  tallyNav = require('./tallyNav');
+  tallyNav = require('./tallyNav'),
+  personRef;
 
 /*========================================================||
 ||   React native variables, used as inline tags          ||
@@ -22,6 +22,7 @@ var {
  Text,
  Image,
  TouchableHighlight,
+ TouchableOpacity,
  Component
 } = React;
 
@@ -40,38 +41,39 @@ var indents = [],
 ||========================================================*/
 
 class FeaturedNav extends Component {
+
+  getInitialState() {
+    return {
+      opacity: 0.2,
+    }
+  }
+
   render() {
     window.FeaturedNav = this;
     person.shuffle(qualities);
     this.getTraits();
     return (
       <View style={styles.featNavContainer}>
-        <Image source={{uri: 'http://chrissalam.com/bash/sailing.png'}}
-          style={{backgroundColor: 'transparent', height: 600}}>
-    
-          <TouchableHighlight 
-            underlayColor='transparent'
-            onPress={()=>{
-              console.log("PRESSED IMAGE")
-
+        <Image source={{uri: 'http://chrissalam.com/bash/sailing.png'}} style={{backgroundColor: 'transparent', height: '600'}}>
+          <TouchableHighlight underlayColor='transparent'
+            onPress={()=>{ console.log("PRESSED IMAGE")
               this.props.navigator.push({
-                title: 'title',
+                title: 'Stats for '+ person.name,
                 component: tallyNav,
-              leftButtonTitle: 'Back',
-              onLeftButtonPress: () => this.props.navigator.pop(),
+                leftButtonTitle: 'Back',
+                onLeftButtonPress: () => this.props.navigator.pop(),
             })
-            }}>
-          <Image source={{uri: 'http://graph.facebook.com/' + person.id + '/picture?type=large'}}
-              style={{marginTop: 40, marginLeft:20, width: 170, height: 170, borderRadius: 85}} />
-
+          }}>
+            <Image source={{uri: 'http://graph.facebook.com/' + person.id + '/picture?type=large'}}
+                 style={{marginTop: 40, marginLeft:20, width: 170, height: 170, borderRadius: 85, borderWidth:5, borderColor:'#FFB6C1'}} />
           </TouchableHighlight>
-          <ScrollView
-            onScroll={() => { console.log('onScroll!'); }}
-            scrollEventThrottle={200}
-            contentInset={{top: -50}}
-            style={styles.scrollView}>
-            {indents}
-          </ScrollView>
+            <ScrollView
+              onScroll={() => { console.log('onScroll!'); }}
+              scrollEventThrottle={200}
+              contentInset={{top: -50}}
+              style={styles.scrollView}>
+              {indents}
+            </ScrollView>
         </Image>
       </View>
     );
@@ -84,7 +86,7 @@ class FeaturedNav extends Component {
       (function runIt(variable){
         indents.push(
           <TouchableHighlight style={styles.featNavButton}
-            underlayColor='rgba(200,28,78,0.2)'
+          underlayColor={'rgba(200,28,78,0.2)'}
           onPress={()=>{
             personRef.child(variable).update(vote)
             qualities.splice(qualities.indexOf(vote),1);

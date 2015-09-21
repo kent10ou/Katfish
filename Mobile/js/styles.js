@@ -1,4 +1,3 @@
-
 'use strict';
 
 module.exports = {
@@ -76,10 +75,6 @@ featNavButton: {
  alignSelf: 'stretch',
  justifyContent: 'center'
 },
-tallyButton: {
-  marginTop: 75,
-  textAlign: 'right'
-},
 moreNavContainer: {
   flex: 0.15,
   alignItems: "center",
@@ -119,6 +114,15 @@ searchNavChoiceText: {
   flex: 1,
   textAlign: 'center'
 },
+
+/*=================================||
+||    This section for search      ||
+||=================================*/
+
+searchContainer: {
+  flex: 1
+},
+
 /*=================================||
 ||    This section for more        ||
 ||=================================*/

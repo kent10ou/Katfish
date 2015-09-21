@@ -5,18 +5,17 @@
 ||========================================================*/
 
 var React = require('react-native'),
-REQUEST_URL = 'https://katfish.firebaseio.com/pond.json',
-Firebase = require('firebase'),
-person = require('./PersonDB'),
-ref = new Firebase("https://katfish.firebaseio.com/"),
+  Firebase = require('firebase'),
+  person = require('./PersonDB'),
+  ref = new Firebase("https://katfish.firebaseio.com/"),
 
 /*========================================================||
 ||   Locally defined variables                            ||
 ||========================================================*/
 
-styles = require('./styles'),
-userID,
-traits;
+  styles = require('./styles'),
+  userID,
+  traits;
 
 /*========================================================||
 ||   React native variables, used like HTML tags          ||
@@ -33,18 +32,19 @@ var {
 } = React;
 
 /*========================================================||
-||   Adds the SearchNav view on top of Katfish            ||
+||   This is the pond                                     ||
 ||========================================================*/
 
 var SearchNav = React.createClass ({
   render() {
+    window.SearchNav = this;
     if(!this.state){
       this.formatFriends();
       return this.renderLoadingView()
     }
     return (
       <View style={styles.featNavContainer}>
-      <Image source={{uri: 'http://chrissalam.com/bash/fishing.png'}} style={{backgroundColor: 'transparent', height: '600'}}>
+      <Image source={{uri: 'http://chrissalam.com/bash/fishing2.png'}} style={{backgroundColor: 'transparent', height: '600', width: '374'}}>
       <ScrollView>
       {this.state.names}
       </ScrollView>
@@ -57,7 +57,7 @@ var SearchNav = React.createClass ({
     return (
       <View style={styles.container}>
         <Text>
-          Loading movies...
+          Take a look at the pond
         </Text>
       </View>
     );
@@ -66,8 +66,6 @@ var SearchNav = React.createClass ({
   clickHandler(friend){
     person.id = friend.id;
     person.name = friend.name;
-    console.log('person.name')
-    // window.Featured.setState({reloaded: true});
     window.FeaturedNav.setState({reloaded: true});
     window.Katfish.setState({
       selectedTab: 'featured'
@@ -85,12 +83,12 @@ var SearchNav = React.createClass ({
           names.push(
             <TouchableHighlight style={{underlayColor: 'white'}}
             onPress={()=>{that.clickHandler(friend)}}>
-              <Image source={{uri: 'http://graph.facebook.com/' + friend.id + '/picture?type=large'}}
-                style={{margin: 20, width: 180, height: 180, borderRadius: 90}}>
-                <View style={styles.searchNavOverlay}>
-                  <Text style={styles.searchNavChoiceText}>{friends[i].name}</Text>
-                </View>
-              </Image>
+            <Image source={{uri: 'http://graph.facebook.com/' + friend.id + '/picture?type=large'}}
+            style={{margin: 20, width: 180, height: 180, borderRadius: 90, marginLeft:96, borderWidth:5, borderColor:'white'}}>
+            <View style={styles.searchNavOverlay}>
+            <Text style={styles.searchNavChoiceText}>{friends[i].name}</Text>
+            </View>
+            </Image>
             </TouchableHighlight>
           )
           that.setState({'names' : names})
