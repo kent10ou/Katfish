@@ -17,8 +17,7 @@ var {
   Image
 } = React;
 
-
-var TallyNav = React.createClass ({
+var TallyMoreNav = React.createClass ({
 
   getInitialState() {
 
@@ -38,7 +37,7 @@ var TallyNav = React.createClass ({
     if (!this.state.loaded) {
       ref.on("value", function(snapshot) {
         that.setState({
-          traits: snapshot.val().pond[person.id],
+          traits: snapshot.val().pond[window.Katfish.userID],
           loaded: true});
       });
       return this.renderLoadingView();
@@ -63,31 +62,31 @@ var TallyNav = React.createClass ({
      vote,
      count;
 
-     for(var key in traitData){
-       count = -1;
-       for (var vote in traitData[key]) { count++; }
-       if (key !== 'name' && key !== 'id' && count > 0) {
-         var vote = "votes";
-         if (count === 1) { vote = vote.replace(/s/,""); }
-           countVotes.push(count  + " " + vote + "\n");
-         traits.push(key.replace(/\w/,function(s){return s.toUpperCase(); }) + "\t\t\t\n");
-       }
+   for(var key in traitData){
+     count = -1;
+     for (var vote in traitData[key]) { count++; }
+     if (key !== 'name' && key !== 'id' && count > 0) {
+       var vote = "votes";
+       if (count === 1) { vote = vote.replace(/s/,""); }
+       countVotes.push(count  + " " + vote + "\n");
+       traits.push(key.replace(/\w/,function(s){return s.toUpperCase(); }) + "\t\t\t\n");
      }
+   }
 
      return (
-        <Image source={{uri: 'http://chrissalam.com/bash/beach-1.jpg'}} style={{backgroundColor: 'transparent', height: 700, resizeMode: 'stretch',width: 400}}>
-          <View style={{flexDirection: 'row', alignItems: 'auto', marginTop: 200, marginLeft: 60}}>
-            <View style={{flexDirection:'column'}}>
-              <Text numberOfLines={lines} style={styles.tallyNavChoiceText}> {traits}</Text>
-            </View>
-            <View style={{flexDirection:'column'}}>
-              <Text numberOfLines={lines} style={styles.tallyNavChoiceText}> {countVotes}</Text>
-            </View>
+      <Image source={{uri: 'http://chrissalam.com/bash/beach-3.jpg'}} style={{backgroundColor: 'transparent', height: 700, resizeMode: 'stretch',width: 400}}>
+        <View style={{flexDirection: 'row', alignItems: 'auto', marginTop: 200, marginLeft: 60}}>
+          <View style={{flexDirection:'column'}}>
+            <Text numberOfLines={lines} style={styles.tallyNavChoiceText}>{traits}</Text>
           </View>
-        </Image>
+          <View style={{flexDirection:'column'}}>
+            <Text numberOfLines={lines} style={styles.tallyNavChoiceText}>{countVotes}</Text>
+          </View>
+        </View>
+      </Image>
      )
    }
 
  });
 
- module.exports = TallyNav;
+ module.exports = TallyMoreNav;

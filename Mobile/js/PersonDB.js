@@ -7,8 +7,6 @@
 var React = require('react-native'),
   Firebase = require('firebase'),
   ref = new Firebase("https://katfish.firebaseio.com/"),
-  friendStore,
-  friendsList,
   person = {};
 
 /*========================================================||
@@ -27,26 +25,18 @@ person.shuffle = function(array) {
 
 person.id = "id"
 
-ref.once('value', function(snapshot) {
-  friendsList = Object.keys(snapshot.val().pond);
-  console.log('friendsList',friendsList);
-});
-
 /*========================================================||
 ||   Accessing the database through firebase functions    ||
 ||========================================================*/
 
 person.fish = function(friends){
   this.shuffle(friends);
-  person.id = friends[0].id
+  person.id = friends[0].id;
+  friends.push({id: person.id});
   var personRef = ref.child("pond").child(person.id);
-
-  personRef.on("value", function(snapshot){
-      person.name = snapshot.val().name;
-      if (person.name === window.Katfish.name) {
-        console.log("conflict!");
-      }
-  });
+    personRef.on("value", function (snap) {
+      person.name = snap.val().name;
+    });
 }
 /*========================================================||
 ||   Make the person available throughout the application ||
