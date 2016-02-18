@@ -22,9 +22,16 @@ var Katfish = React.createClass({
     if(!this.state){
       return (
         <Image
+<<<<<<< HEAD
           source={{uri: 'http://chrissalam.com/bash/sailing.png'}}
           style={styles.loginImage}>
         <Login style={styles.loginContainer}/>
+=======
+        source={{uri: 'http://chrissalam.com/bash/sailing.png'}}
+        style={styles.loginImage}>
+        <Login
+        style={styles.loginContainer}/>
+>>>>>>> dff57d9a3c3bceeae40d751b9f6ff02aaf046266
         </Image>
         );
     }

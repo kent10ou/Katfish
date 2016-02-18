@@ -1,14 +1,17 @@
 {
-  "name": "Katfish",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node_modules/react-native/packager/packager.sh"
-  },
+  "name": "Mobile",
+  "version": "0.0.0",
+  "description": "Hello Exponent!",
+  "main": "main.js",
+  "author": null,
   "dependencies": {
+<<<<<<< HEAD
     "react-native": "^0.10.1",
     "react-native-fbsdkcore": "0.0.5",
     "react-native-fbsdklogin": "0.0.5",
     "react-native-fbsdkshare": "0.0.5"
+=======
+    "react-native": "exponentjs/react-native#2015-08-02-xde"
+>>>>>>> dff57d9a3c3bceeae40d751b9f6ff02aaf046266
   }
 }

@@ -35,11 +35,12 @@
 ehthumbs.db
 Thumbs.db
 Web/node_modules
-Web/iOS
-Web/ThesisProject.xcodeproj
-Web/ThesisProjectTests
 Mobile/node_modules
+<<<<<<< HEAD
 Mobile/ThesisProjectTests
 Mobile/iOS
+=======
+>>>>>>> dff57d9a3c3bceeae40d751b9f6ff02aaf046266
 api
+Mobile/iOS
 

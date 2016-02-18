@@ -5,15 +5,18 @@
 ||========================================================*/
 
 var React = require('react-native'),
+  person = require('./PersonDB'),
   Firebase = require('firebase'),
-  person = require('./PersonDB');
+  ref = new Firebase("https://katfish.firebaseio.com/"),
+  personRef = ref.child("pond").child(person.id),
+
 
 /*========================================================||
 ||   Locally required sources                             ||
 ||========================================================*/
 
-var styles = require('./styles'),
-  MoreNav = require('./MoreNav');
+  FeatNav = require('./FeaturedNav'),
+  styles = require('./styles');
 
 /*========================================================||
 ||   React native variables, used like HTML tags          ||
@@ -21,26 +24,21 @@ var styles = require('./styles'),
 
 var {
     NavigatorIOS,
-    Component
+    Component,
+    Image
    } = React;
 
-
-/*========================================================||
-||   Adds the More view on top of Katfish                 ||
-||========================================================*/
-
-class More extends Component {
-    render() {
-      console.log()
-        return (
-            <NavigatorIOS
-              style={styles.moreContainer}
-              initialRoute={{
-                title: window.Katfish.userName,
-                component: MoreNav
-            }}/>
-        );
-    };
+class Featured extends Component {
+  render() {
+    return (
+      <NavigatorIOS
+        style={styles.featContainer}
+        initialRoute={{
+          title: "Katfish your friend!",
+          component: FeatNav
+      }}/>
+    );
+  }
 }
 
-module.exports = More;
+module.exports = Featured;

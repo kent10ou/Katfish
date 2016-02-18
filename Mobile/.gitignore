@@ -34,8 +34,13 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+<<<<<<< HEAD
 Web/node_modules
 Mobile/node_modules
 iOS
 api
+=======
+node_modules
+iOS
+>>>>>>> dff57d9a3c3bceeae40d751b9f6ff02aaf046266
 

@@ -6,41 +6,40 @@
 
 var React = require('react-native'),
   Firebase = require('firebase'),
-  person = require('./PersonDB');
+  person = require('./PersonDB'),
 
 /*========================================================||
 ||   Locally required sources                             ||
 ||========================================================*/
 
-var styles = require('./styles'),
-  MoreNav = require('./MoreNav');
+  styles = require('./styles'),
+  SearchNav = require('./SearchNav');
 
 /*========================================================||
 ||   React native variables, used like HTML tags          ||
 ||========================================================*/
 
 var {
-    NavigatorIOS,
-    Component
-   } = React;
+  NavigatorIOS,
+  Component
+} = React;
 
 
 /*========================================================||
-||   Adds the More view on top of Katfish                 ||
+||   Adds the Search view on top of Katfish               ||
 ||========================================================*/
 
-class More extends Component {
+class Search extends Component {
     render() {
-      console.log()
         return (
             <NavigatorIOS
-              style={styles.moreContainer}
-              initialRoute={{
-                title: window.Katfish.userName,
-                component: MoreNav
+                style={styles.searchContainer}
+                initialRoute={{
+            title: "Your friends",
+            component: SearchNav
             }}/>
         );
-    };
+    }
 }
 
-module.exports = More;
+module.exports = Search;
