@@ -1190,6 +1190,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Katfish;
+				STRIP_INSTALLED_PRODUCT = YES;
 			};
 			name = Debug;
 		};
